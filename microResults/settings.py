@@ -1,3 +1,8 @@
+import os
+
+import dj_database_url
+import django_heroku
+
 """
 Django settings for microResults project.
 
@@ -23,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-iiuo5%26+!w!=f%9%&p1ed!xh82wt5!9-$_*1e%bf61y3xl7fq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -48,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'microResults.urls'
@@ -77,11 +83,12 @@ WSGI_APPLICATION = 'microResults.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': BASE_DIR / 'd1bhg1u3hcocs5',
     }
 }
 
+"postgres://qrwqffosfcmubh:c4c1b2c46ed7c8c6e3a9b80229b6ac25e56f5d8847e0eb6f9f885d36ecc7b3d4@ec2-44-195-132-31.compute-1.amazonaws.com:5432/d1bhg1u3hcocs5"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -118,8 +125,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())

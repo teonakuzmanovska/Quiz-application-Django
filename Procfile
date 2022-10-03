@@ -1,0 +1,1 @@
+web: gunicorn microResults.wsgi --log-file -
