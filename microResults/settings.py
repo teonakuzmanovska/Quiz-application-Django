@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-iiuo5%26+!w!=f%9%&p1ed!xh82wt5!9-$_*1e%bf61y3xl7fq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'microresults.herokuapp.com/']
 
 
 # Application definition
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'microResults.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': BASE_DIR / 'd1bhg1u3hcocs5',
+        'NAME': 'd1bhg1u3hcocs5'
     }
 }
 
