@@ -84,7 +84,11 @@ WSGI_APPLICATION = 'microResults.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1bhg1u3hcocs5'
+        'NAME': 'd1bhg1u3hcocs5',
+        'HOST': 'ec2-44-195-132-31.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'qrwqffosfcmubh',
+        'PASSWORD': 'c4c1b2c46ed7c8c6e3a9b80229b6ac25e56f5d8847e0eb6f9f885d36ecc7b3d4'
     }
 }
 
