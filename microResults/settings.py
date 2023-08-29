@@ -2,6 +2,7 @@ import os
 
 import dj_database_url
 import django_heroku
+from dotenv import load_dotenv, find_dotenv
 
 """
 Django settings for microResults project.
@@ -24,8 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
+# retriving secret keys
+load_dotenv(find_dotenv())
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-iiuo5%26+!w!=f%9%&p1ed!xh82wt5!9-$_*1e%bf61y3xl7fq'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,15 +88,13 @@ WSGI_APPLICATION = 'microResults.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1bhg1u3hcocs5',
-        'HOST': 'ec2-44-195-132-31.compute-1.amazonaws.com',
+        'NAME': os.environ['DATABASE_NAME'],
+        'HOST': os.environ['HOST'],
         'PORT': 5432,
-        'USER': 'qrwqffosfcmubh',
-        'PASSWORD': 'c4c1b2c46ed7c8c6e3a9b80229b6ac25e56f5d8847e0eb6f9f885d36ecc7b3d4'
+        'USER': os.environ['USERNAME'],
+        'PASSWORD': os.environ['PASSWORD']
     }
 }
-
-"postgres://qrwqffosfcmubh:c4c1b2c46ed7c8c6e3a9b80229b6ac25e56f5d8847e0eb6f9f885d36ecc7b3d4@ec2-44-195-132-31.compute-1.amazonaws.com:5432/d1bhg1u3hcocs5"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
