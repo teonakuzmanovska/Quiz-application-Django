@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/2b862f75-ee66-4595-9ae4-96959a23a768/resourceGroups/django-quiz/providers/Microsoft.Web/sites/quiz-app-django",
+    "appService.deploySubpath": ".",
+}

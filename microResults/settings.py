@@ -2,7 +2,7 @@ import os
 
 import dj_database_url
 import django_heroku
-from dotenv import load_dotenv, find_dotenv
+from dotenv import find_dotenv, load_dotenv
 
 """
 Django settings for microResults project.
@@ -32,10 +32,13 @@ load_dotenv(find_dotenv())
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'microresults.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'quiz-django-app.azurewebsites.net']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://quiz-django-app.azurewebsites.net'
+]
 
 # Application definition
 
@@ -87,12 +90,14 @@ WSGI_APPLICATION = 'microResults.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DATABASE_NAME'],
-        'HOST': os.environ['HOST'],
-        'PORT': 5432,
-        'USER': os.environ['USERNAME'],
-        'PASSWORD': os.environ['PASSWORD']
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': os.environ['DATABASE_NAME'],
+        # 'HOST': os.environ['HOST'],
+        # 'PORT': 5432,
+        # 'USER': os.environ['USER'],
+        # 'PASSWORD': os.environ['PASSWORD']
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

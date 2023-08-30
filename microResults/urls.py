@@ -20,6 +20,7 @@ from microResultsApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', quiz, name="quiz"),
     path('quiz/', quiz, name="quiz"),
     path('results/', results, name="results")
 ]
